@@ -15,8 +15,12 @@ async function findDefinition() {
 
    try {
       const resultObject = await response.json()
-      console.log(resultObject)
-      console.log(resultObject.list[0].definition)
+      // console.log(resultObject)
+      // console.log(resultObject.list[0].definition)
+
+      for (let i = 0; i < resultObject.list.length; i++) {
+         console.log(resultObject.list[i].definition.replace(/\[+|\]+/g, ''))
+      }
    } catch (e) {
       console.log('Error:', e)
    }
