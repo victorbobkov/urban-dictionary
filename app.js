@@ -1,6 +1,5 @@
 const input = document.getElementById('input')
 const button = document.getElementById('button')
-const container = document.getElementById('container')
 
 const options = {
    method: 'GET',
@@ -16,21 +15,34 @@ async function findDefinition() {
 
    try {
       const resultObject = await response.json()
-      console.log(resultObject)
-      // console.log(resultObject.list[0].definition)
-
-      // Loop over the object to get and print out different fields
-      for (let i = 0; i < resultObject.list.length; i++) {
-         console.log('Definition:', resultObject.list[i].definition.replace(/\[+|\]+/g, ''))
-         console.log('Example:', resultObject.list[i].example.replace(/\[+|\]+/g, ''))
-         console.log('Link:', resultObject.list[i].permalink)
-
-         const definitionHTML = resultObject.list[i].definition.replace(/\[+|\]+/g, '')
-         container.append(definitionHTML)
-      }
+         console.log(resultObject)
+         generateData(resultObject);
    } catch (e) {
       console.log('Error:', e)
    }
 }
 
-button.addEventListener('click', findDefinition)
+function generateData(resultObject) {
+   let defWord = document.getElementById('def');
+   if (defWord.childNodes.length === 0) {
+      for (let i=0; i < resultObject.list.length; i++ ) {
+         let div = document.createElement('div')
+         div.className = 'definition-word'
+         defWord.appendChild(div);
+
+         let defWordStatement = document.createElement('p');
+         defWordStatement.className = 'definition-statement'
+         defWordStatement.textContent = resultObject.list[i].definition
+         div.appendChild(defWordStatement);
+         console.log('defwordstatement', defWordStatement)
+      }
+   } else {
+      let definitionCheck = document.getElementsByClassName('definition-statement')
+      for (let i=0; i < resultObject.list.length; i++) {
+         definitionCheck[i].textContent = resultObject.list[i].definition
+         console.log('definitionCheck', definitionCheck);
+      }
+   }
+}
+
+button.addEventListener('click', findDefinition);
