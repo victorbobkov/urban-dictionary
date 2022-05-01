@@ -6,10 +6,18 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Urban Dictionary Search</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <input type="text" id="input">
-    <button id="button">Define!</button>
+    <div class="main">
+        <div class="top">
+            <img src="https://www.transparentpng.com/thumb/book/hfU1gl-book-transparent-background.png" alt="book transparent background @transparentpng.com">
+            <h1 id=title>Urban Dictionary</h1>
+            <input type="text" id="input" placeholder="Type any word here..."/>
+            <button type="submit" id="button" minlength="1">Define!</button>
+        </div>
+        <div id="def"></div>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
