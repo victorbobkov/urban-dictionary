@@ -46,4 +46,3 @@ function generateData(resultObject) {
 }
 
 button.addEventListener('click', findDefinition);
-
