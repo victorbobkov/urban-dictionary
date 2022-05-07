@@ -39,6 +39,8 @@ function generateData(resultObject) {
 
          let defWordLink = document.createElement('a')
          defWordLink.textContent = resultObject.list[i].permalink
+         defWordLink.href = `${resultObject.list[i].permalink}`
+         defWordLink.target = "_blank"
 
          definitionCard.appendChild(defWordStatement)
          definitionCard.appendChild(defWordExample)
