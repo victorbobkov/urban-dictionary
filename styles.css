@@ -82,6 +82,7 @@ button:hover {
     filter: brightness(60%);
     font-weight: bold;
     color: black;
+    cursor: pointer;
 }
 
 button:active {
@@ -121,6 +122,7 @@ button:active {
 .definition-word:hover {
     transform: translate(10px, 5%);
     filter: brightness(80%);
+    cursor: context-menu;
 }
 
 .definition-statement {
