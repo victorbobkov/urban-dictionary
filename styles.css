@@ -133,4 +133,17 @@ button:active {
     font-style: oblique;
 }
 
+a {
+    color: whitesmoke;
+}
+
+a:hover {
+    color: gray;
+    font-style: italic;
+}
+
+a:active {
+    transform: translate(5px, 10%);
+}
+
 
