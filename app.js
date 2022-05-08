@@ -22,8 +22,16 @@ async function findDefinition() {
    }
 }
 
+function clearInput(event) {
+   event.preventDefault()
+   let input = document.getElementById('input')
+   input.value = ''
+}
+
 function generateData(resultObject) {
    let defWord = document.getElementById('def')
+   let input = document.getElementById('input')
+   console.log('input', input);
    if (defWord.childNodes.length === 0) {
       for (let i = 0; i < resultObject.list.length; i++) {
          let definitionCard = document.createElement('div')
@@ -35,6 +43,7 @@ function generateData(resultObject) {
          defWordStatement.textContent = resultObject.list[i].definition.replace(/\[+|\]+/g, '')
 
          let defWordExample = document.createElement('p')
+         defWordExample.className = 'defword-example'
          defWordExample.textContent = resultObject.list[i].example.replace(/\[+|\]+/g, '')
 
          let defWordLink = document.createElement('a')
@@ -49,11 +58,18 @@ function generateData(resultObject) {
       }
    } else {
       let definitionCheck = document.getElementsByClassName('definition-statement')
+      let defCheckWordExam = document.getElementsByClassName('defword-example')
+      let defCheckWordLink = document.querySelectorAll('a')
       for (let i = 0; i < resultObject.list.length; i++) {
-         definitionCheck[i].textContent = resultObject.list[i].definition
+         definitionCheck[i].textContent = resultObject.list[i].definition.replace(/\[+|\]+/g, '')
+         defCheckWordExam[i].textContent = resultObject.list[i].example.replace(/\[+|\]+/g, '')
+         defCheckWordLink[i].textContent = resultObject.list[i].permalink
+         defCheckWordLink[i].href = `${resultObject.list[i].permalink}`
+         defCheckWordLink[i].target = "_blank"
          console.log('definitionCheck', definitionCheck)
       }
    }
 }
 
 button.addEventListener('click', findDefinition)
+button.addEventListener('click', clearInput)
